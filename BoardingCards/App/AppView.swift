@@ -11,10 +11,7 @@ struct AppView: View {
     public var body: some View {
         SwitchStore(self.store) {
             CaseLet(state: /AppState.loading, action: AppAction.loading) { store in
-                NavigationView {
-                    LoadingView()
-                }
-                .navigationViewStyle(.stack)
+                LoadingView()
             }
             CaseLet(state: /AppState.result, action: AppAction.result) { store in
                 NavigationView {
