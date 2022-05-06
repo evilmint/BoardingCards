@@ -9,7 +9,7 @@ struct AppView: View {
     }
 
     public var body: some View {
-        SwitchStore(self.store) {
+        SwitchStore(store) {
             CaseLet(state: /AppState.loading, action: AppAction.loading) { store in
                 LoadingView()
             }

@@ -32,12 +32,12 @@ struct PieChartView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack{
-                ForEach(0 ..< self.values.count) { i in
+                ForEach(0 ..< self.values.count, id: \.self) { i in
                     PieSliceView(pieSliceData: self.slices[i])
                 }
                 .frame(width: geometry.size.width, height: geometry.size.width)
 
-                ForEach(0 ..< self.values.count) { i in
+                ForEach(0 ..< self.values.count, id: \.self) { i in
                     PieSliceView(pieSliceData:  PieSliceData(startAngle: self.slices[i].startAngle, endAngle: self.slices[i].endAngle, color: self.slices[i].color, isStroked: true))
                 }
                 .frame(width: geometry.size.width, height: geometry.size.width)

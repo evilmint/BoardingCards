@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		492A45352825B11100D5718C /* JourneyPlanner+Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A45342825B11100D5718C /* JourneyPlanner+Effect.swift */; };
+		492A45382825B1E100D5718C /* Task+Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A45372825B1E100D5718C /* Task+Sleep.swift */; };
+		492A453A2825B33F00D5718C /* View+If.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A45392825B33F00D5718C /* View+If.swift */; };
+		492A453C2825B39B00D5718C /* Journey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A453B2825B39B00D5718C /* Journey.swift */; };
+		492A453E2825B56E00D5718C /* JourneyGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A453D2825B56E00D5718C /* JourneyGenerator.swift */; };
+		492A45402825B5D800D5718C /* StateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A453F2825B5D800D5718C /* StateReducer.swift */; };
+		492A45422825B61F00D5718C /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A45412825B61F00D5718C /* LoadingState.swift */; };
+		492A45442825B62E00D5718C /* ResultState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A45432825B62E00D5718C /* ResultState.swift */; };
 		49731D022802E68100938C7B /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 49731D012802E68100938C7B /* ComposableArchitecture */; };
 		49DA8233281D736E0096B540 /* BoardingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DA8232281D736E0096B540 /* BoardingCard.swift */; };
 		49DA8234281D75D80096B540 /* JourneyPlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49731CF62802E20700938C7B /* JourneyPlannerTests.swift */; };
@@ -70,6 +78,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		492A45342825B11100D5718C /* JourneyPlanner+Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JourneyPlanner+Effect.swift"; sourceTree = "<group>"; };
+		492A45372825B1E100D5718C /* Task+Sleep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Sleep.swift"; sourceTree = "<group>"; };
+		492A45392825B33F00D5718C /* View+If.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+If.swift"; sourceTree = "<group>"; };
+		492A453B2825B39B00D5718C /* Journey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journey.swift; sourceTree = "<group>"; };
+		492A453D2825B56E00D5718C /* JourneyGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyGenerator.swift; sourceTree = "<group>"; };
+		492A453F2825B5D800D5718C /* StateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateReducer.swift; sourceTree = "<group>"; };
+		492A45412825B61F00D5718C /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
+		492A45432825B62E00D5718C /* ResultState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultState.swift; sourceTree = "<group>"; };
 		49731CF62802E20700938C7B /* JourneyPlannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyPlannerTests.swift; sourceTree = "<group>"; };
 		49731D11280333FE00938C7B /* BoardingCards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BoardingCards.entitlements; sourceTree = "<group>"; };
 		49DA8232281D736E0096B540 /* BoardingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardingCard.swift; sourceTree = "<group>"; };
@@ -120,6 +136,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		492A45362825B1D800D5718C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				492A45372825B1E100D5718C /* Task+Sleep.swift */,
+				492A45392825B33F00D5718C /* View+If.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		49731CF52802E20700938C7B /* BoardingCardsTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +172,7 @@
 				49DA824F281E962A0096B540 /* AppAction.swift */,
 				49DA8251281E962F0096B540 /* AppEnvironment.swift */,
 				49DA8253281E96410096B540 /* AppReducer.swift */,
+				492A453F2825B5D800D5718C /* StateReducer.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -156,6 +182,7 @@
 			children = (
 				49DA8256281E986B0096B540 /* ResultView.swift */,
 				49DA8258281E992B0096B540 /* ResultAction.swift */,
+				492A45432825B62E00D5718C /* ResultState.swift */,
 			);
 			path = Result;
 			sourceTree = "<group>";
@@ -175,6 +202,7 @@
 			children = (
 				49DA8294281EB22A0096B540 /* LoadingView.swift */,
 				49DA8296281EB2B20096B540 /* LoadingAction.swift */,
+				492A45412825B61F00D5718C /* LoadingState.swift */,
 			);
 			path = Loading;
 			sourceTree = "<group>";
@@ -192,9 +220,12 @@
 		49DA82A3282026E50096B540 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				49DA8241281E883D0096B540 /* Transportations */,
 				49DA8232281D736E0096B540 /* BoardingCard.swift */,
+				492A453B2825B39B00D5718C /* Journey.swift */,
 				49DA8236281D788E0096B540 /* JourneyPlanner.swift */,
+				492A45342825B11100D5718C /* JourneyPlanner+Effect.swift */,
+				49DA8241281E883D0096B540 /* Transportations */,
+				492A453D2825B56E00D5718C /* JourneyGenerator.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -237,6 +268,7 @@
 		CA86E49924253C2500357AD9 /* BoardingCards */ = {
 			isa = PBXGroup;
 			children = (
+				492A45362825B1D800D5718C /* Extensions */,
 				49DA82A5282027060096B540 /* Scenes */,
 				49DA82A3282026E50096B540 /* Domain */,
 				49DA825A281E9DCF0096B540 /* Components */,
@@ -365,22 +397,30 @@
 				49DA8295281EB22A0096B540 /* LoadingView.swift in Sources */,
 				49DA82A22820257F0096B540 /* PieSliceView.swift in Sources */,
 				49DA8249281E886B0096B540 /* FlightTransportation.swift in Sources */,
+				492A453C2825B39B00D5718C /* Journey.swift in Sources */,
 				49DA8259281E992B0096B540 /* ResultAction.swift in Sources */,
 				49DA8254281E96410096B540 /* AppReducer.swift in Sources */,
 				49DA8247281E88600096B540 /* BusTransportation.swift in Sources */,
+				492A45422825B61F00D5718C /* LoadingState.swift in Sources */,
 				49DA824E281E96240096B540 /* AppState.swift in Sources */,
+				492A45382825B1E100D5718C /* Task+Sleep.swift in Sources */,
 				49DA829B282022AF0096B540 /* BoardingCardsApp.swift in Sources */,
 				49DA8299281EBBA30096B540 /* PieChartView.swift in Sources */,
 				49DA8297281EB2B20096B540 /* LoadingAction.swift in Sources */,
 				49DA829D2820243A0096B540 /* BoardingCardsColor.swift in Sources */,
 				49DA8243281E88440096B540 /* TransportationMeans.swift in Sources */,
 				49DA824C281E95FB0096B540 /* AppView.swift in Sources */,
+				492A45402825B5D800D5718C /* StateReducer.swift in Sources */,
+				492A453E2825B56E00D5718C /* JourneyGenerator.swift in Sources */,
 				49DA8245281E88530096B540 /* TrainTransportation.swift in Sources */,
 				49DA8233281D736E0096B540 /* BoardingCard.swift in Sources */,
 				49DA8257281E986B0096B540 /* ResultView.swift in Sources */,
+				492A45442825B62E00D5718C /* ResultState.swift in Sources */,
 				49DA825C281E9DD60096B540 /* PrimaryButtonStyle.swift in Sources */,
 				49DA82A0282025670096B540 /* PieSliceData.swift in Sources */,
 				49DA8237281D788E0096B540 /* JourneyPlanner.swift in Sources */,
+				492A453A2825B33F00D5718C /* View+If.swift in Sources */,
+				492A45352825B11100D5718C /* JourneyPlanner+Effect.swift in Sources */,
 				49DA8252281E962F0096B540 /* AppEnvironment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

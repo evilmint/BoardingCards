@@ -14,43 +14,42 @@ struct ResultView: View {
 
     var body: some View {
         WithViewStore(store) { viewStore in
-            HStack(alignment: .top) {
-                VStack(alignment: .leading) {
-                    sortTripButton(viewStore: viewStore)
+            VStack(alignment: .leading) {
+                sortTripButton(viewStore: viewStore)
+                    .frame(maxWidth: .infinity, alignment: .center)
 
-                    Spacer()
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 16)
-
-                    Text("Unsorted boarding cards")
-                        .fontWeight(.bold)
-
-                    boardingCardsList(viewStore: viewStore)
-
-                    Spacer()
-                }
+                Spacer()
                     .frame(maxWidth: .infinity)
-                    .padding()
+                    .frame(height: 16)
+
+                Text(viewStore.journey.isPlanned ?
+                     "Sorted boarding cards" :
+                     "Unsorted boarding cards"
+                )
+                    .fontWeight(.bold)
+
+                boardingCardsList(viewStore: viewStore)
             }
                 .frame(maxWidth: .infinity)
-                .background(BoardingCardsColor.background)
-        }
+                .padding()
+        }.background(BoardingCardsColor.background)
     }
 
-    private func sortTripButton(viewStore: ViewStore<ResultState, ResultAction>) -> some View {
-        HStack(alignment: .center) {
-            if viewStore.sortingAllowed {
+    private func sortTripButton(
+        viewStore: ViewStore<ResultState, ResultAction>
+    ) -> some View {
+        Group {
+            if !viewStore.journey.isPlanned {
                 Button("Sort trip") {
-                    viewStore.send(.sort(viewStore.boardingCards))
+                    viewStore.send(.sort(viewStore.journey.boardingCards))
                 }.buttonStyle(PrimaryButtonStyle())
             }
         }
-        .frame(maxWidth: .infinity, alignment: .center)
     }
 
     private func boardingCardsList(viewStore: ViewStore<ResultState, ResultAction>) -> some View {
         List {
-            ForEach(viewStore.boardingCards, id: \.self) { card in
+            ForEach(viewStore.journey.boardingCards, id: \.self) { card in
                 VStack(alignment: .leading, spacing: 0) {
                     Text("\(card.transportation.name) - \(card.origin.name) › \(card.destination.name)")
                         .padding(EdgeInsets(top: 12, leading: 16, bottom: 0, trailing: 8))
@@ -68,6 +67,11 @@ struct ResultView: View {
         }
         .listStyle(.plain)
         .border(BoardingCardsColor.primary, width: 2)
+        .if(viewStore.journey.isPlanned) { view in
+            view.refreshable {
+                viewStore.send(.refresh)
+            }
+        }
     }
 }
 
@@ -75,40 +79,14 @@ struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
         ResultView(
             store: Store(
-                initialState: ResultState(boardingCards: [
-                    makeBoardingCard(origin: City(name: "Tokyo"), destination: City(name: "Warsaw")),
-                    makeBoardingCard(origin: City(name: "Warsaw"), destination: City(name: "Prague")),
-                    makeBoardingCard(origin: City(name: "Prague"), destination: City(name: "Budapest")),
-                    makeBoardingCard(origin: City(name: "Budapest"), destination: City(name: "Berlin")),
-                    makeBoardingCard(origin: City(name: "Berlin"), destination: City(name: "Vienna"))
-                ],
-                sortingAllowed: true),
+                initialState: ResultState(journey: JourneyGenerator().generate()),
                 reducer: Reducer { _, _, _ in .none },
-                environment: AppEnvironment(mainQueue: .main, journeyPlanner: JourneyPlanner())
+                environment: AppEnvironment(
+                    mainQueue: .main,
+                    journeyPlanner: JourneyPlanner(),
+                    journeyGenerator: JourneyGenerator()
+                )
             )
         )
     }
-}
-
-private func makeBoardingCard(
-    origin: City,
-    destination: City,
-    transportationType: TransportationMeans? = nil
-) -> BoardingCard {
-    var transportation: TransportationMeans = transportationType ?? FlightTransportation(
-        traits: FlightTransportation.Traits(
-            seat: "45B",
-            gate: "A",
-            flight: "BER45",
-            baggageDropMethod: .automatic
-        )
-    )
-
-    let boardingCard = BoardingCard(
-        origin: origin,
-        destination: destination,
-        transportation: transportation
-    )
-    transportation.boardingCard = boardingCard
-    return boardingCard
 }

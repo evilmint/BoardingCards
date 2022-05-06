@@ -11,6 +11,5 @@ import Foundation
 enum AppAction: Equatable {
     case loading(LoadingAction)
     case result(ResultAction)
-
-    case updateResults([BoardingCard])
+    case journeyPlanned(Journey)
 }

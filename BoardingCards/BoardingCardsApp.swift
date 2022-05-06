@@ -11,15 +11,18 @@ import SwiftUI
 
 @main
 struct BoardingCardsApp: App {
+    private let journeyGenerator = JourneyGenerator()
+
     var body: some Scene {
         WindowGroup {
             AppView(
                 store: Store(
-                    initialState: AppState(),
+                    initialState: AppState(journey: journeyGenerator.generate()),
                     reducer: appReducer.debug(),
                     environment: AppEnvironment(
                         mainQueue: .main,
-                        journeyPlanner: JourneyPlanner()
+                        journeyPlanner: JourneyPlanner(),
+                        journeyGenerator: journeyGenerator
                     )
                 )
             )

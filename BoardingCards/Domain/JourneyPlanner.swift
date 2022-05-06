@@ -1,41 +1,15 @@
 import Foundation
 import Collections
 
-struct Journey {
-    struct Step {
-        let description: String
-    }
-
-    let boardingCards: [BoardingCard]
-
-    var steps: [Step] {
-        var steps: [Step] = []
-
-        for card in boardingCards {
-            if let instructions = card.transportation.instructions {
-                steps.append(Step(description: instructions))
-            }
-        }
-
-        steps.append(Step(description: "You have arrived at your final destination."))
-
-        return steps
-    }
-}
-
 final class JourneyPlanner {
     func plan(using boardingCards: [BoardingCard]) async throws -> Journey {
-        let task = Task.detached { () -> Journey in
-            try await Task.sleep(nanoseconds: UInt64.random(in: 500_000_000 ... 2_500_000_000))
-            return self.planSynchronous(using: boardingCards)
-        }
- 
-        return try await task.value
+        try await Task.sleep(milliseconds: UInt64.random(in: 500 ... 2500))
+        return self.planSynchronous(using: boardingCards)
     }
 
     private func planSynchronous(using boardingCards: [BoardingCard]) -> Journey {
         guard !boardingCards.isEmpty else {
-            return Journey(boardingCards: [])
+            return Journey.planned(boardingCards: [])
         }
 
         var destinations: [City: BoardingCard] = [:]
@@ -65,6 +39,6 @@ final class JourneyPlanner {
             }
         }
 
-        return Journey(boardingCards: Array(sortedBoardingCards))
+        return Journey.planned(boardingCards: Array(sortedBoardingCards))
     }
 }
