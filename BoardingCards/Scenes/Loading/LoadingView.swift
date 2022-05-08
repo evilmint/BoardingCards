@@ -14,8 +14,7 @@ struct LoadingView: View {
                                 Color.gray.opacity(0.3),
                                 Color.gray.opacity(0.7),
                                 Color.gray,
-                            ],
-                            backgroundColor: Color.white
+                            ]
                         ).frame(
                             width: proxy.size.width * 0.3,
                             height: proxy.size.width * 0.3,
@@ -26,7 +25,7 @@ struct LoadingView: View {
                     Spacer()
                 }.frame(maxWidth: .infinity)
             }
-        }
+        }.background(BoardingCardsColor.background)
     }
 }
 

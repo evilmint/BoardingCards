@@ -5,13 +5,13 @@ func stateReducer() -> Reducer<AppState, AppAction, AppEnvironment> {
         switch action {
         case .result(.sort(let boardingCards)):
             return .concatenate(
-                .init(value: .loading(LoadingAction.empty)),
+                Effect(value: .loading(.empty)),
                 environment.journeyPlanner.planEffect(using: boardingCards)
                     .map(AppAction.journeyPlanned)
             )
 
         case .result(.refresh):
-            state = resultState(journey: environment.journeyGenerator.generate())
+            state = .result(journey: environment.journeyGenerator.generate())
             return .none
 
         case .loading:
@@ -19,12 +19,8 @@ func stateReducer() -> Reducer<AppState, AppAction, AppEnvironment> {
             return .none
 
         case .journeyPlanned(let journey):
-            state = resultState(journey: journey)
+            state = .result(journey: journey)
             return .none
         }
     }
-}
-
-private func resultState(journey: Journey) -> AppState {
-    .result(ResultState(journey: journey))
 }

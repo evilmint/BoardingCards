@@ -6,8 +6,6 @@ struct PieChartView: View {
     public let values: [Double]
     public var colors: [Color]
 
-    public var backgroundColor: Color
-
     var slices: [PieSliceData] {
         let sum = values.reduce(0, +)
         var endDeg: Double = 0
@@ -34,14 +32,15 @@ struct PieChartView: View {
                 }
                 .frame(width: geometry.size.width, height: geometry.size.width)
             }
-            .background(self.backgroundColor)
-            .foregroundColor(Color.white)
         }
     }
 }
 
 struct PieChartView_Previews: PreviewProvider {
     static var previews: some View {
-        PieChartView(values: [1300, 500, 300], colors: [Color.blue, Color.green, Color.orange], backgroundColor: Color.white)
+        PieChartView(
+            values: [1300, 500, 300],
+            colors: [Color.blue, Color.green, Color.orange]
+        )
     }
 }

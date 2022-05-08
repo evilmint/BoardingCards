@@ -7,4 +7,8 @@ enum AppState: Equatable {
     public init(journey: Journey) {
         self = .result(.init(journey: journey))
     }
+
+    static func result(journey: Journey) -> Self {
+        return .result(.init(journey: journey))
+    }
 }
