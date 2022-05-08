@@ -10,6 +10,10 @@ final class BoardingCard: Hashable, Equatable {
 
     let transportation: TransportationMeans
 
+    var header: String {
+        "\(transportation.name) - \(origin.name) › \(destination.name)"
+    }
+
     init(origin: City, destination: City, transportation: TransportationMeans) {
         self.origin = origin
         self.destination = destination

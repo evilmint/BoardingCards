@@ -1,11 +1,3 @@
-//
-//  BoardingCardsColor.swift
-//  BoardingCards
-//
-//  Created by Aleksander Lorenc on 02/05/2022.
-//  Copyright © 2022 Aleksander Lorenc. All rights reserved.
-//
-
 import SwiftUI
 
 enum BoardingCardsColor {
