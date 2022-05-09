@@ -1,10 +1,6 @@
 import Foundation
 
-struct City: Hashable, Equatable {
-    let name: String
-}
-
-final class BoardingCard: Hashable, Equatable {
+final class BoardingCard: Hashable, Equatable, Identifiable {
     let origin: City
     let destination: City
 

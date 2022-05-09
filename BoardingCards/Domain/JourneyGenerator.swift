@@ -8,7 +8,7 @@ struct JourneyGenerator {
             makeBoardingCard(origin: City(name: "Prague"), destination: City(name: "Budapest")),
             makeBoardingCard(origin: City(name: "Budapest"), destination: City(name: "Berlin")),
             makeBoardingCard(origin: City(name: "Berlin"), destination: City(name: "Vienna"))
-        ])
+        ].shuffled())
     }
 
     private func makeBoardingCard(

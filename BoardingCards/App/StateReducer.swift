@@ -3,10 +3,10 @@ import ComposableArchitecture
 func stateReducer() -> Reducer<AppState, AppAction, AppEnvironment> {
     Reducer { state, action, environment in
         switch action {
-        case .result(.sort(let boardingCards)):
+        case .result(.plan(let journey)):
             return .concatenate(
                 Effect(value: .loading(.empty)),
-                environment.journeyPlanner.planEffect(using: boardingCards)
+                environment.journeyPlanner.planEffect(using: journey.boardingCards)
                     .map(AppAction.journeyPlanned)
             )
 
@@ -20,6 +20,9 @@ func stateReducer() -> Reducer<AppState, AppAction, AppEnvironment> {
 
         case .journeyPlanned(let journey):
             state = .result(journey: journey)
+            return .none
+
+        case .result:
             return .none
         }
     }

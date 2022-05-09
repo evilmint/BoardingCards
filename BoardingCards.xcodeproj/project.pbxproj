@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4901F34B2827BCD000EAB913 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4901F34A2827BCD000EAB913 /* City.swift */; };
+		4901F34E2827E89B00EAB913 /* ResultDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4901F34D2827E89B00EAB913 /* ResultDetailsView.swift */; };
+		4901F3502829696900EAB913 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4901F34F2829696900EAB913 /* Card.swift */; };
+		4901F3522829731A00EAB913 /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4901F3512829731A00EAB913 /* ItemList.swift */; };
+		4901F3542829870600EAB913 /* ResultReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4901F3532829870600EAB913 /* ResultReducer.swift */; };
 		492A45352825B11100D5718C /* JourneyPlanner+Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A45342825B11100D5718C /* JourneyPlanner+Effect.swift */; };
 		492A45382825B1E100D5718C /* Task+Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A45372825B1E100D5718C /* Task+Sleep.swift */; };
 		492A453A2825B33F00D5718C /* View+If.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A45392825B33F00D5718C /* View+If.swift */; };
@@ -78,6 +83,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4901F34A2827BCD000EAB913 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		4901F34D2827E89B00EAB913 /* ResultDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetailsView.swift; sourceTree = "<group>"; };
+		4901F34F2829696900EAB913 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		4901F3512829731A00EAB913 /* ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
+		4901F3532829870600EAB913 /* ResultReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultReducer.swift; sourceTree = "<group>"; };
 		492A45342825B11100D5718C /* JourneyPlanner+Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JourneyPlanner+Effect.swift"; sourceTree = "<group>"; };
 		492A45372825B1E100D5718C /* Task+Sleep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Sleep.swift"; sourceTree = "<group>"; };
 		492A45392825B33F00D5718C /* View+If.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+If.swift"; sourceTree = "<group>"; };
@@ -136,6 +146,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4901F34C2827E88E00EAB913 /* ResultDetails */ = {
+			isa = PBXGroup;
+			children = (
+				4901F34D2827E89B00EAB913 /* ResultDetailsView.swift */,
+			);
+			path = ResultDetails;
+			sourceTree = "<group>";
+		};
 		492A45362825B1D800D5718C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,9 +198,11 @@
 		49DA8255281E985E0096B540 /* Result */ = {
 			isa = PBXGroup;
 			children = (
+				4901F34C2827E88E00EAB913 /* ResultDetails */,
 				49DA8256281E986B0096B540 /* ResultView.swift */,
 				49DA8258281E992B0096B540 /* ResultAction.swift */,
 				492A45432825B62E00D5718C /* ResultState.swift */,
+				4901F3532829870600EAB913 /* ResultReducer.swift */,
 			);
 			path = Result;
 			sourceTree = "<group>";
@@ -193,6 +213,8 @@
 				49DA829E2820255C0096B540 /* Chart */,
 				49DA825B281E9DD60096B540 /* PrimaryButtonStyle.swift */,
 				49DA829C2820243A0096B540 /* BoardingCardsColor.swift */,
+				4901F34F2829696900EAB913 /* Card.swift */,
+				4901F3512829731A00EAB913 /* ItemList.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -226,6 +248,7 @@
 				492A45342825B11100D5718C /* JourneyPlanner+Effect.swift */,
 				49DA8241281E883D0096B540 /* Transportations */,
 				492A453D2825B56E00D5718C /* JourneyGenerator.swift */,
+				4901F34A2827BCD000EAB913 /* City.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -405,11 +428,13 @@
 				49DA824E281E96240096B540 /* AppState.swift in Sources */,
 				492A45382825B1E100D5718C /* Task+Sleep.swift in Sources */,
 				49DA829B282022AF0096B540 /* BoardingCardsApp.swift in Sources */,
+				4901F34E2827E89B00EAB913 /* ResultDetailsView.swift in Sources */,
 				49DA8299281EBBA30096B540 /* PieChartView.swift in Sources */,
 				49DA8297281EB2B20096B540 /* LoadingAction.swift in Sources */,
 				49DA829D2820243A0096B540 /* BoardingCardsColor.swift in Sources */,
 				49DA8243281E88440096B540 /* TransportationMeans.swift in Sources */,
 				49DA824C281E95FB0096B540 /* AppView.swift in Sources */,
+				4901F3522829731A00EAB913 /* ItemList.swift in Sources */,
 				492A45402825B5D800D5718C /* StateReducer.swift in Sources */,
 				492A453E2825B56E00D5718C /* JourneyGenerator.swift in Sources */,
 				49DA8245281E88530096B540 /* TrainTransportation.swift in Sources */,
@@ -419,9 +444,12 @@
 				49DA825C281E9DD60096B540 /* PrimaryButtonStyle.swift in Sources */,
 				49DA82A0282025670096B540 /* PieSliceData.swift in Sources */,
 				49DA8237281D788E0096B540 /* JourneyPlanner.swift in Sources */,
+				4901F34B2827BCD000EAB913 /* City.swift in Sources */,
+				4901F3542829870600EAB913 /* ResultReducer.swift in Sources */,
 				492A453A2825B33F00D5718C /* View+If.swift in Sources */,
 				492A45352825B11100D5718C /* JourneyPlanner+Effect.swift in Sources */,
 				49DA8252281E962F0096B540 /* AppEnvironment.swift in Sources */,
+				4901F3502829696900EAB913 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,6 +602,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -605,6 +634,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

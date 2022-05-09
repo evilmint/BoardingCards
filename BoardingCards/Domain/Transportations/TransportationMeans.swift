@@ -1,7 +1,7 @@
 import Foundation
 
 protocol TransportationMeans {
-    var instructions: String? { get }
+    var instructions: [AttributedString] { get }
     var name: String { get }
     var boardingCard: BoardingCard? { get set }
 }

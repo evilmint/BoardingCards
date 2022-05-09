@@ -1,8 +1,8 @@
 import Foundation
 
 struct Journey: Equatable {
-    struct Step {
-        let description: String
+    struct Step: Hashable {
+        let description: AttributedString
     }
 
     let isPlanned: Bool
@@ -12,9 +12,7 @@ struct Journey: Equatable {
         var steps: [Step] = []
 
         for card in boardingCards {
-            if let instructions = card.transportation.instructions {
-                steps.append(Step(description: instructions))
-            }
+            steps.append(contentsOf: card.transportation.instructions.map(Step.init))
         }
 
         steps.append(Step(description: "You have arrived at your final destination."))

@@ -22,29 +22,42 @@ final class FlightTransportation: TransportationMeans {
 
     weak var boardingCard: BoardingCard?
 
-    var instructions: String? {
-        guard let boardingCard = boardingCard else {
-            return nil
-        }
+    var instructions: [AttributedString] {
+        guard let boardingCard = boardingCard else { return [] }
 
         let baggageDropFormatted: String
 
         switch traits.baggageDropMethod {
         case .automatic:
-            baggageDropFormatted = String(format: "Baggage will we automatically transferred from your last leg.")
+            baggageDropFormatted = String(format: "Baggage will be **automatically transferred** from your last leg.")
         case .manual(let ticketCounter):
-            baggageDropFormatted = String(format: "Baggage drop at ticket counter %@.", ticketCounter)
+            baggageDropFormatted = String(format: "Baggage drop at ticket counter **%@**.", ticketCounter)
         }
 
-        return String(
-            format: "From %@, take flight %@ to %@. Gate %@, seat %@. %@",
-            boardingCard.origin.name,
-            traits.flight,
-            boardingCard.destination.name,
-            traits.gate,
-            traits.seat,
-            baggageDropFormatted
-        )
+        do {
+            return [
+                try AttributedString(markdown:
+                    String(
+                        format: "From **%@**, take flight **%@** to **%@**.",
+                        boardingCard.origin.name,
+                        traits.flight,
+                        boardingCard.destination.name
+                    )
+                ),
+                try AttributedString(markdown: String(
+                    format: "Gate **%@**, seat **%@**.",
+                    traits.gate,
+                    traits.seat
+                )),
+                try AttributedString(markdown: String(
+                    format: "%@",
+                    baggageDropFormatted
+                ))
+            ]
+        } catch {
+            print(error)
+            return []
+        }
     }
 
     init(traits: Traits) {

@@ -14,15 +14,17 @@ final class TrainTransportation: TransportationMeans {
 
     weak var boardingCard: BoardingCard?
 
-    var instructions: String? {
-        guard let boardingCard = boardingCard else { return nil }
-        return String(
-            format: "Take train %@ from %@ to %@. Sit in seat %@",
+    var instructions: [AttributedString] {
+        guard let boardingCard = boardingCard else { return [] }
+        return [
+            try! AttributedString(markdown: String(
+            format: "Take train **%@** from **%@** to **%@**. Sit in seat **%@**",
             traits.train,
             boardingCard.origin.name,
             boardingCard.destination.name,
             traits.seat
-        )
+        ))
+        ]
     }
 
     init(traits: Traits) {

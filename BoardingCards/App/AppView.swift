@@ -20,6 +20,7 @@ struct AppView: View {
                         .navigationBarTitleDisplayMode(.inline)
                         .navigationTitle("Trips")
                 }
+                .accentColor(.black)
                 .navigationViewStyle(.stack)
             }
         }

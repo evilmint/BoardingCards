@@ -17,23 +17,33 @@ final class BusTransportation: TransportationMeans {
 
     weak var boardingCard: BoardingCard?
 
-    var instructions: String? {
-        guard let boardingCard = boardingCard else { return nil }
+    var instructions: [AttributedString] {
+        guard let boardingCard = boardingCard else { return [] }
 
         switch traits.type {
         case .airport:
-            return String(
-                format: "Take the airport bus from %@ to %@. No seat assignment.",
-                boardingCard.origin.name,
-                boardingCard.destination.name
-            )
+            do {
+                return [try AttributedString(markdown: String(
+                    format: "Take the airport bus from **%@** to **%@**.",
+                    boardingCard.origin.name,
+                    boardingCard.destination.name
+                )),
+                                 try AttributedString(markdown:  String(
+                    format: "No seat assignment."
+                ))]
+            } catch {
+                return [AttributedString("wow")]
+            }
         case .regular(let seat):
-            return String(
-                format: "Take the airport bus from %@ to %@. Seat %@.",
-                boardingCard.origin.name,
-                boardingCard.destination.name,
-                seat
-            )
+            return [
+                try! AttributedString(markdown: String(
+                    format: "Take the airport bus from **%@** to **%@**. Seat **%@**.",
+                    boardingCard.origin.name,
+                    boardingCard.destination.name,
+                    seat
+                )),
+                try! AttributedString(markdown: String(format: "Seat %@.", seat))
+            ]
         }
     }
 

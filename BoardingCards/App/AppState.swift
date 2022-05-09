@@ -5,10 +5,10 @@ enum AppState: Equatable {
     case loading(LoadingState)
 
     public init(journey: Journey) {
-        self = .result(.init(journey: journey))
+        self = .result(.init(journey: journey, detailsVisible: false, boardingCardDetail: nil))
     }
 
     static func result(journey: Journey) -> Self {
-        return .result(.init(journey: journey))
+        return .result(.init(journey: journey, detailsVisible: false, boardingCardDetail: nil))
     }
 }
