@@ -12,6 +12,9 @@
 		4901F3502829696900EAB913 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4901F34F2829696900EAB913 /* Card.swift */; };
 		4901F3522829731A00EAB913 /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4901F3512829731A00EAB913 /* ItemList.swift */; };
 		4901F3542829870600EAB913 /* ResultReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4901F3532829870600EAB913 /* ResultReducer.swift */; };
+		4901F3562829B23300EAB913 /* View+RefreshableStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4901F3552829B23300EAB913 /* View+RefreshableStore.swift */; };
+		4901F3582829B33400EAB913 /* View+macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4901F3572829B33400EAB913 /* View+macOS.swift */; };
+		4901F35A282AB30E00EAB913 /* Color+DynamicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4901F359282AB30E00EAB913 /* Color+DynamicProvider.swift */; };
 		492A45352825B11100D5718C /* JourneyPlanner+Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A45342825B11100D5718C /* JourneyPlanner+Effect.swift */; };
 		492A45382825B1E100D5718C /* Task+Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A45372825B1E100D5718C /* Task+Sleep.swift */; };
 		492A453A2825B33F00D5718C /* View+If.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492A45392825B33F00D5718C /* View+If.swift */; };
@@ -88,6 +91,9 @@
 		4901F34F2829696900EAB913 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		4901F3512829731A00EAB913 /* ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
 		4901F3532829870600EAB913 /* ResultReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultReducer.swift; sourceTree = "<group>"; };
+		4901F3552829B23300EAB913 /* View+RefreshableStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+RefreshableStore.swift"; sourceTree = "<group>"; };
+		4901F3572829B33400EAB913 /* View+macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+macOS.swift"; sourceTree = "<group>"; };
+		4901F359282AB30E00EAB913 /* Color+DynamicProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+DynamicProvider.swift"; sourceTree = "<group>"; };
 		492A45342825B11100D5718C /* JourneyPlanner+Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JourneyPlanner+Effect.swift"; sourceTree = "<group>"; };
 		492A45372825B1E100D5718C /* Task+Sleep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Sleep.swift"; sourceTree = "<group>"; };
 		492A45392825B33F00D5718C /* View+If.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+If.swift"; sourceTree = "<group>"; };
@@ -159,6 +165,9 @@
 			children = (
 				492A45372825B1E100D5718C /* Task+Sleep.swift */,
 				492A45392825B33F00D5718C /* View+If.swift */,
+				4901F3552829B23300EAB913 /* View+RefreshableStore.swift */,
+				4901F3572829B33400EAB913 /* View+macOS.swift */,
+				4901F359282AB30E00EAB913 /* Color+DynamicProvider.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -431,6 +440,7 @@
 				4901F34E2827E89B00EAB913 /* ResultDetailsView.swift in Sources */,
 				49DA8299281EBBA30096B540 /* PieChartView.swift in Sources */,
 				49DA8297281EB2B20096B540 /* LoadingAction.swift in Sources */,
+				4901F35A282AB30E00EAB913 /* Color+DynamicProvider.swift in Sources */,
 				49DA829D2820243A0096B540 /* BoardingCardsColor.swift in Sources */,
 				49DA8243281E88440096B540 /* TransportationMeans.swift in Sources */,
 				49DA824C281E95FB0096B540 /* AppView.swift in Sources */,
@@ -441,8 +451,10 @@
 				49DA8233281D736E0096B540 /* BoardingCard.swift in Sources */,
 				49DA8257281E986B0096B540 /* ResultView.swift in Sources */,
 				492A45442825B62E00D5718C /* ResultState.swift in Sources */,
+				4901F3562829B23300EAB913 /* View+RefreshableStore.swift in Sources */,
 				49DA825C281E9DD60096B540 /* PrimaryButtonStyle.swift in Sources */,
 				49DA82A0282025670096B540 /* PieSliceData.swift in Sources */,
+				4901F3582829B33400EAB913 /* View+macOS.swift in Sources */,
 				49DA8237281D788E0096B540 /* JourneyPlanner.swift in Sources */,
 				4901F34B2827BCD000EAB913 /* City.swift in Sources */,
 				4901F3542829870600EAB913 /* ResultReducer.swift in Sources */,

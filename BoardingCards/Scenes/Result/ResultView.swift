@@ -11,17 +11,18 @@ struct ResultView: View {
                     sortTripButton(viewStore: viewStore)
                         .frame(maxWidth: .infinity, alignment: .center)
                 } else {
-#if targetEnvironment(macCatalyst)
                     refreshTripButton(viewStore: viewStore)
                         .frame(maxWidth: .infinity, alignment: .center)
-#endif
+                        .macOS()
                 }
 
                 Spacer()
                     .frame(maxWidth: .infinity)
                     .frame(height: 16)
 
-                Text(sortButtonText(journey: viewStore.journey)).fontWeight(.bold)
+                Text(sortButtonText(journey: viewStore.journey))
+                    .fontWeight(.bold)
+                    .foregroundColor(BoardingCardsColor.text)
 
                 boardingCardsList(viewStore: viewStore)
             }
@@ -58,19 +59,14 @@ struct ResultView: View {
         ZStack {
             ItemList(viewStore.journey.boardingCards) { card in
                 Text(card.header)
+                    .foregroundColor(BoardingCardsColor.textLightBackground)
             }.onItemTap { card in
                 if viewStore.journey.isPlanned {
                     viewStore.send(.presentDetails(true, card))
                 }
             }
             .if(viewStore.journey.isPlanned) { view in
-#if targetEnvironment(macCatalyst)
-                view
-#else
-                view.refreshable {
-                    viewStore.send(.refresh)
-                }
-#endif
+                view.refreshable(store: viewStore, action: .refresh)
             }
 
             NavigationLink(

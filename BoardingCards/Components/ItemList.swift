@@ -35,6 +35,7 @@ struct ItemList<Data, ID, Content> : View
                         .frame(maxWidth: .infinity)
                         .background(BoardingCardsColor.primary)
                 }
+                .background(Color.white)
                 .listRowInsets(EdgeInsets())
                 .onTapGesture { self.storage.onItemTap?(data) }
             }.listRowSeparator(.hidden)

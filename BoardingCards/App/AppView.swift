@@ -19,8 +19,9 @@ struct AppView: View {
                         .navigationBarHidden(false)
                         .navigationBarTitleDisplayMode(.inline)
                         .navigationTitle("Trips")
+                        .foregroundColor(.black)
                 }
-                .accentColor(.black)
+                .accentColor(BoardingCardsColor.text)
                 .navigationViewStyle(.stack)
             }
         }

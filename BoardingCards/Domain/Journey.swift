@@ -9,11 +9,9 @@ struct Journey: Equatable {
     let boardingCards: [BoardingCard]
 
     var steps: [Step] {
-        var steps: [Step] = []
-
-        for card in boardingCards {
-            steps.append(contentsOf: card.transportation.instructions.map(Step.init))
-        }
+        var steps = boardingCards
+            .flatMap { $0.transportation.instructions }
+            .map(Step.init)
 
         steps.append(Step(description: "You have arrived at your final destination."))
         return steps

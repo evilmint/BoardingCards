@@ -7,6 +7,7 @@ struct PrimaryButtonStyle: PrimitiveButtonStyle {
             configuration.label
                 .padding(EdgeInsets(top: 8, leading: 14, bottom: 8, trailing: 14))
                 .background(Color.white)
+                .foregroundColor(BoardingCardsColor.textLightBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 6))
                 .overlay(
                     RoundedRectangle(cornerRadius: 6)

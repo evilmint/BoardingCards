@@ -1,6 +1,6 @@
 import Foundation
 
-final class BoardingCard: Hashable, Equatable, Identifiable {
+final class BoardingCard: Equatable, Identifiable {
     let origin: City
     let destination: City
 
