@@ -10,7 +10,6 @@ struct ResultDetailsView: View {
             Card {
                 ForEach(boardingCard.transportation.instructions, id: \.self) { instruction in
                     Text("• \(instruction)")
-
                         .foregroundColor(BoardingCardsColor.textLightBackground)
                         .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
                 }
@@ -36,8 +35,6 @@ struct ResultDetailsView_Previews: PreviewProvider {
         )
         transportation.boardingCard = boardingCard
 
-        return ResultDetailsView(
-            boardingCard: boardingCard
-        )
+        return ElementPreview(ResultDetailsView(boardingCard: boardingCard))
     }
 }

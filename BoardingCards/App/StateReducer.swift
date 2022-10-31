@@ -1,29 +1,57 @@
 import ComposableArchitecture
 
-func stateReducer() -> Reducer<AppState, AppAction, AppEnvironment> {
-    Reducer { state, action, environment in
-        switch action {
-        case .result(.plan(let journey)):
-            return .concatenate(
-                Effect(value: .loading(.empty)),
-                environment.journeyPlanner.planEffect(using: journey.boardingCards)
-                    .map(AppAction.journeyPlanned)
-            )
+enum AppState: Equatable {
+    case result(ResultState)
+    case loading(LoadingState)
 
-        case .result(.refresh):
-            state = .result(journey: environment.journeyGenerator.generate())
-            return .none
+    public init(journey: Journey) {
+        self = .result(.init(journey: journey, detailsVisible: false, boardingCardDetail: nil))
+    }
 
-        case .loading:
-            state = .loading(.init())
-            return .none
+    static func result(journey: Journey) -> Self {
+        return .result(.init(journey: journey, detailsVisible: false, boardingCardDetail: nil))
+    }
+}
 
-        case .journeyPlanned(let journey):
-            state = .result(journey: journey)
-            return .none
+enum AppAction: Equatable {
+    case loading(LoadingAction)
+    case result(ResultAction)
+    case journeyPlanned(Journey)
+}
 
-        case .result:
-            return .none
+struct StateReducer: ReducerProtocol {
+    typealias State = AppState
+    typealias Action = AppAction
+
+    @Dependency(\.journeyPlanner) var journeyPlanner
+    @Dependency(\.journeyGenerator) var journeyGenerator
+
+    var body: some ReducerProtocol<State, Action> {
+        Reduce { state, action in
+            switch action {
+            case .result(.plan(let journey)):
+                return .concatenate(
+                    Effect(value: .loading(.empty)),
+                    journeyPlanner.planEffect(using: journey.boardingCards)
+                        .map(AppAction.journeyPlanned)
+                )
+
+            case .result(.refresh):
+                state = .result(journey: journeyGenerator.generate())
+                return .none
+
+            case .loading:
+                state = .loading(.init())
+                return .none
+
+            case .journeyPlanned(let journey):
+                state = .result(journey: journey)
+                return .none
+
+            case .result:
+                return .none
+            }
         }
     }
 }
+

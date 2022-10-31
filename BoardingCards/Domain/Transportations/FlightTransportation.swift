@@ -55,7 +55,6 @@ final class FlightTransportation: TransportationMeans {
                 ))
             ]
         } catch {
-            print(error)
             return []
         }
     }

@@ -10,12 +10,7 @@ struct BoardingCardsApp: App {
             AppView(
                 store: Store(
                     initialState: AppState(journey: journeyGenerator.generate()),
-                    reducer: appReducer.debug(),
-                    environment: AppEnvironment(
-                        mainQueue: .main,
-                        journeyPlanner: JourneyPlanner(),
-                        journeyGenerator: journeyGenerator
-                    )
+                    reducer: AppReducer()._printChanges()
                 )
             )
         }

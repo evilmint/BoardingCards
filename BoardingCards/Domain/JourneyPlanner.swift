@@ -1,5 +1,6 @@
 import Foundation
 import Collections
+import ComposableArchitecture
 
 final class JourneyPlanner {
     func plan(using boardingCards: [BoardingCard]) async throws -> Journey {
@@ -41,4 +42,15 @@ final class JourneyPlanner {
 
         return Journey.planned(boardingCards: Array(sortedBoardingCards))
     }
+}
+
+extension JourneyPlanner: DependencyKey {
+  static let liveValue = JourneyPlanner()
+}
+
+extension DependencyValues {
+  var journeyPlanner: JourneyPlanner {
+    get { self[JourneyPlanner.self] }
+    set { self[JourneyPlanner.self] = newValue }
+  }
 }

@@ -5,7 +5,7 @@ extension View {
 #if targetEnvironment(macCatalyst)
         self
 #else
-        self.hidden()
+        self.frame(width: 0, height: 0).hidden()
 #endif
     }
 }

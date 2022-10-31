@@ -7,14 +7,15 @@ struct ResultView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             VStack(alignment: .leading) {
-                if !viewStore.journey.isPlanned {
-                    sortTripButton(viewStore: viewStore)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                } else {
-                    refreshTripButton(viewStore: viewStore)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .macOS()
-                }
+                ZStack {
+                    if !viewStore.journey.isPlanned {
+                        sortTripButton(viewStore: viewStore)
+                    } else {
+                        #if targetEnvironment(macCatalyst)
+                        refreshTripButton(viewStore: viewStore)
+                        #endif
+                    }
+                }.frame(maxWidth: .infinity, alignment: .center)
 
                 Spacer()
                     .frame(maxWidth: .infinity)
@@ -94,14 +95,11 @@ struct ResultView: View {
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultView(
-            store: Store(
-                initialState: ResultState(journey: JourneyGenerator().generate(), detailsVisible: false, boardingCardDetail: nil),
-                reducer: Reducer { _, _, _ in .none },
-                environment: AppEnvironment(
-                    mainQueue: .main,
-                    journeyPlanner: JourneyPlanner(),
-                    journeyGenerator: JourneyGenerator()
+        ElementPreview(
+            ResultView(
+                store: Store(
+                    initialState: ResultState(journey: JourneyGenerator().generate(), detailsVisible: false, boardingCardDetail: nil),
+                    reducer: ResultReducer()
                 )
             )
         )

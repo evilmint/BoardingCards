@@ -37,12 +37,11 @@ final class BusTransportation: TransportationMeans {
         case .regular(let seat):
             return [
                 try! AttributedString(markdown: String(
-                    format: "Take the airport bus from **%@** to **%@**. Seat **%@**.",
+                    format: "Take the airport bus from **%@** to **%@**..",
                     boardingCard.origin.name,
-                    boardingCard.destination.name,
-                    seat
+                    boardingCard.destination.name
                 )),
-                try! AttributedString(markdown: String(format: "Seat %@.", seat))
+                try! AttributedString(markdown: String(format: "Seat **%@**.", seat))
             ]
         }
     }
