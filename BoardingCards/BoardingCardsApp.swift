@@ -9,7 +9,7 @@ struct BoardingCardsApp: App {
         WindowGroup {
             AppView(
                 store: Store(
-                    initialState: AppState(journey: journeyGenerator.generate()),
+                    initialState: AppReducer.State(journey: journeyGenerator.generate()),
                     reducer: AppReducer()._printChanges()
                 )
             )

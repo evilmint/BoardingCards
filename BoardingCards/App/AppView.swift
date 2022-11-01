@@ -2,18 +2,18 @@ import ComposableArchitecture
 import SwiftUI
 
 struct AppView: View {
-    let store: Store<AppState, AppAction>
+    let store: StoreOf<AppReducer>
 
-    init(store: Store<AppState, AppAction>) {
+    init(store: StoreOf<AppReducer>) {
         self.store = store
     }
 
     public var body: some View {
         SwitchStore(store) {
-            CaseLet(state: /AppState.loading, action: AppAction.loading) { store in
+            CaseLet(state: /AppReducer.State.loading, action: AppReducer.Action.loading) { store in
                 LoadingView()
             }
-            CaseLet(state: /AppState.result, action: AppAction.result) { store in
+            CaseLet(state: /AppReducer.State.result, action: AppReducer.Action.result) { store in
                 NavigationView {
                     ResultView(store: store)
                         .navigationBarHidden(false)

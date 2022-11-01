@@ -2,7 +2,7 @@ import SwiftUI
 import ComposableArchitecture
 
 struct ResultView: View {
-    let store: Store<ResultState, ResultAction>
+    let store: StoreOf<ResultReducer>
 
     var body: some View {
         WithViewStore(store) { viewStore in
@@ -39,7 +39,7 @@ struct ResultView: View {
     }
 
     private func sortTripButton(
-        viewStore: ViewStore<ResultState, ResultAction>
+        viewStore: ViewStoreOf<ResultReducer>
     ) -> some View {
         Button("Sort trip") {
             viewStore.send(.plan(viewStore.journey))
@@ -47,7 +47,7 @@ struct ResultView: View {
     }
 
     private func refreshTripButton(
-        viewStore: ViewStore<ResultState, ResultAction>
+        viewStore: ViewStoreOf<ResultReducer>
     ) -> some View {
         Button("Refresh") {
             viewStore.send(.refresh)
@@ -55,7 +55,7 @@ struct ResultView: View {
     }
 
     private func boardingCardsList(
-        viewStore: ViewStore<ResultState, ResultAction>
+        viewStore: ViewStoreOf<ResultReducer>
     ) -> some View {
         ZStack {
             ItemList(viewStore.journey.boardingCards) { card in
@@ -74,7 +74,7 @@ struct ResultView: View {
                 destination: IfLetStore(
                     store.scope(
                         state: \.boardingCardDetail,
-                        action: { _ in ResultAction.presentDetails(false, nil) }
+                        action: { _ in ResultReducer.Action.presentDetails(false, nil) }
                     ),
                     then: { (store: Store<BoardingCard, Error>) in
                         ResultDetailsView(boardingCard: ViewStore(store).state)
@@ -98,7 +98,7 @@ struct ResultView_Previews: PreviewProvider {
         ElementPreview(
             ResultView(
                 store: Store(
-                    initialState: ResultState(journey: JourneyGenerator().generate(), detailsVisible: false, boardingCardDetail: nil),
+                    initialState: ResultReducer.State(journey: JourneyGenerator().generate(), detailsVisible: false, boardingCardDetail: nil),
                     reducer: ResultReducer()
                 )
             )
