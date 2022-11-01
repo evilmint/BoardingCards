@@ -2,7 +2,7 @@ import Foundation
 import Collections
 import ComposableArchitecture
 
-final class JourneyPlanner {
+final class JourneyPlanner: Sendable {
     func plan(using boardingCards: [BoardingCard]) async throws -> Journey {
         try await Task.sleep(milliseconds: UInt64.random(in: 500 ... 2500))
         return self.planSynchronous(using: boardingCards)

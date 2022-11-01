@@ -15,7 +15,7 @@ struct AppReducer: ReducerProtocol {
         }
     }
 
-    enum Action: Equatable {
+    enum Action: Sendable, Equatable {
         case loading(LoadingAction)
         case result(ResultReducer.Action)
         case journeyPlanned(Journey)

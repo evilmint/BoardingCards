@@ -2,7 +2,7 @@ import ComposableArchitecture
 
 struct ResultReducer: ReducerProtocol {
 
-    enum Action: Equatable {
+    enum Action: Sendable, Equatable {
         case plan(Journey)
         case refresh
         case presentDetails(Bool, BoardingCard?)

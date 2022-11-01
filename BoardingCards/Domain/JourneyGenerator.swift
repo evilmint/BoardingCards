@@ -61,7 +61,6 @@ struct JourneyGenerator {
             destination: destination,
             transportation: transportation
         )
-        transportation.boardingCard = boardingCard
         return boardingCard
     }
 

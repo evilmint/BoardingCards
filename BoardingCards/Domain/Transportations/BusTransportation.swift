@@ -15,22 +15,20 @@ final class BusTransportation: TransportationMeans {
     private let traits: Traits
     let name = "Bus"
 
-    weak var boardingCard: BoardingCard?
-
-    var instructions: [AttributedString] {
-        guard let boardingCard = boardingCard else { return [] }
-
+    func instructions(origin: City, destination: City) -> [AttributedString] {
         switch traits.type {
         case .airport:
             do {
-                return [try AttributedString(markdown: String(
-                    format: "Take the airport bus from **%@** to **%@**.",
-                    boardingCard.origin.name,
-                    boardingCard.destination.name
-                )),
-                                 try AttributedString(markdown:  String(
-                    format: "No seat assignment."
-                ))]
+                return [
+                    try AttributedString(markdown: String(
+                        format: "Take the airport bus from **%@** to **%@**.",
+                        origin.name,
+                        destination.name
+                    )),
+                    try AttributedString(markdown:  String(
+                        format: "No seat assignment."
+                    ))
+                ]
             } catch {
                 return [AttributedString("wow")]
             }
@@ -38,8 +36,8 @@ final class BusTransportation: TransportationMeans {
             return [
                 try! AttributedString(markdown: String(
                     format: "Take the airport bus from **%@** to **%@**..",
-                    boardingCard.origin.name,
-                    boardingCard.destination.name
+                    origin.name,
+                    destination.name
                 )),
                 try! AttributedString(markdown: String(format: "Seat **%@**.", seat))
             ]

@@ -8,7 +8,7 @@ struct ResultDetailsView: View {
     var body: some View {
         VStack {
             Card {
-                ForEach(boardingCard.transportation.instructions, id: \.self) { instruction in
+                ForEach(boardingCard.instructions, id: \.self) { instruction in
                     Text("• \(instruction)")
                         .foregroundColor(BoardingCardsColor.textLightBackground)
                         .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
@@ -33,8 +33,6 @@ struct ResultDetailsView_Previews: PreviewProvider {
             destination: City(name: "Tallinn"),
             transportation: transportation
         )
-        transportation.boardingCard = boardingCard
-
         return ElementPreview(ResultDetailsView(boardingCard: boardingCard))
     }
 }

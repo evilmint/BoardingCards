@@ -1,9 +1,8 @@
 import Foundation
 
-protocol TransportationMeans {
-    var instructions: [AttributedString] { get }
+protocol TransportationMeans: Sendable {
+    func instructions(origin: City, destination: City) -> [AttributedString]
     var name: String { get }
-    var boardingCard: BoardingCard? { get set }
 }
 
 protocol TransportationMeansInformationFormatter {

@@ -4,7 +4,7 @@ struct City: Hashable, Equatable {
     let name: String
 }
 
-final class BoardingCard: Equatable, Identifiable {
+final class BoardingCard: Sendable, Equatable, Identifiable {
     let origin: City
     let destination: City
 
@@ -12,6 +12,10 @@ final class BoardingCard: Equatable, Identifiable {
 
     var header: String {
         "\(transportation.name) - \(origin.name) › \(destination.name)"
+    }
+
+    var instructions: [AttributedString] {
+        transportation.instructions(origin: origin, destination: destination)
     }
 
     init(origin: City, destination: City, transportation: TransportationMeans) {

@@ -1,6 +1,6 @@
 import Foundation
 
-struct Journey: Equatable {
+struct Journey: Sendable, Equatable {
     struct Step: Hashable {
         let description: AttributedString
     }
@@ -10,7 +10,7 @@ struct Journey: Equatable {
 
     var steps: [Step] {
         var steps = boardingCards
-            .flatMap { $0.transportation.instructions }
+            .flatMap { $0.transportation.instructions(origin: $0.origin, destination: $0.destination) }
             .map(Step.init)
 
         steps.append(Step(description: "You have arrived at your final destination."))

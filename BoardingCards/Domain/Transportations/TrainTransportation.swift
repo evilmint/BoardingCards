@@ -12,18 +12,15 @@ final class TrainTransportation: TransportationMeans {
     private let traits: Traits
     let name = "Train"
 
-    weak var boardingCard: BoardingCard?
-
-    var instructions: [AttributedString] {
-        guard let boardingCard = boardingCard else { return [] }
-        return [
+    func instructions(origin: City, destination: City) -> [AttributedString] {
+        [
             try! AttributedString(markdown: String(
-            format: "Take train **%@** from **%@** to **%@**. Sit in seat **%@**",
-            traits.train,
-            boardingCard.origin.name,
-            boardingCard.destination.name,
-            traits.seat
-        ))
+                format: "Take train **%@** from **%@** to **%@**. Sit in seat **%@**",
+                traits.train,
+                origin.name,
+                destination.name,
+                traits.seat
+            ))
         ]
     }
 

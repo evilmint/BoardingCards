@@ -20,11 +20,7 @@ final class FlightTransportation: TransportationMeans {
     private let traits: Traits
     let name = "Flight"
 
-    weak var boardingCard: BoardingCard?
-
-    var instructions: [AttributedString] {
-        guard let boardingCard = boardingCard else { return [] }
-
+    func instructions(origin: City, destination: City) -> [AttributedString] {
         let baggageDropFormatted: String
 
         switch traits.baggageDropMethod {
@@ -39,9 +35,9 @@ final class FlightTransportation: TransportationMeans {
                 try AttributedString(markdown:
                     String(
                         format: "From **%@**, take flight **%@** to **%@**.",
-                        boardingCard.origin.name,
+                        origin.name,
                         traits.flight,
-                        boardingCard.destination.name
+                        destination.name
                     )
                 ),
                 try AttributedString(markdown: String(
