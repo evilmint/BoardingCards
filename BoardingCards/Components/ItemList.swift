@@ -1,15 +1,15 @@
 import SwiftUI
 
-fileprivate class ItemListStorage<Element> {
+private class ItemListStorage<Element> {
     var onItemTap: ((Element) -> Void)?
 }
 
-struct ItemList<Data, ID, Content> : View
+struct ItemList<Data, ID, Content>: View
     where
-        Data : RandomAccessCollection,
-        Data.Element : Identifiable,
-        Content : View,
-        ID == Data.Element.ID
+    Data: RandomAccessCollection,
+    Data.Element: Identifiable,
+    Content: View,
+    ID == Data.Element.ID
 {
     private let storage = ItemListStorage<Data.Element>()
 
@@ -45,7 +45,7 @@ struct ItemList<Data, ID, Content> : View
     }
 
     func onItemTap(_ onItemTap: @escaping (Data.Element) -> Void) -> Self {
-        self.storage.onItemTap = onItemTap
+        storage.onItemTap = onItemTap
         return self
     }
 }
@@ -57,7 +57,7 @@ private struct PreviewData: Hashable, Identifiable {
 
 struct ItemList_Previews: PreviewProvider {
     static var previews: some View {
-        let strings = (1...10)
+        let strings = (1 ... 10)
             .map(String.init)
             .map(PreviewData.init)
 

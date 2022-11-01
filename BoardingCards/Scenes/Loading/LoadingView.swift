@@ -13,7 +13,7 @@ struct LoadingView: View {
                                 Color.white,
                                 Color.gray.opacity(0.3),
                                 Color.gray.opacity(0.7),
-                                Color.gray,
+                                Color.gray
                             ]
                         ).frame(
                             width: proxy.size.width * 0.3,

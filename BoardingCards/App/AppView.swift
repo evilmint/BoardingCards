@@ -10,7 +10,7 @@ struct AppView: View {
 
     public var body: some View {
         SwitchStore(store) {
-            CaseLet(state: /AppReducer.State.loading, action: AppReducer.Action.loading) { store in
+            CaseLet(state: /AppReducer.State.loading, action: AppReducer.Action.loading) { _ in
                 LoadingView()
             }
             CaseLet(state: /AppReducer.State.result, action: AppReducer.Action.result) { store in

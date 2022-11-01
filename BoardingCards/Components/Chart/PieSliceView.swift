@@ -26,7 +26,8 @@ struct PieSliceView: View {
                             radius: width * 0.5,
                             startAngle: Angle(degrees: -90.0) + pieSliceData.startAngle,
                             endAngle: Angle(degrees: -90.0) + pieSliceData.endAngle,
-                            clockwise: false)
+                            clockwise: false
+                        )
                     }
                     .fill(pieSliceData.color)
                 } else {
@@ -43,7 +44,8 @@ struct PieSliceView: View {
                             radius: width * 0.5,
                             startAngle: Angle(degrees: -90.0) + pieSliceData.startAngle,
                             endAngle: Angle(degrees: -90.0) + pieSliceData.endAngle,
-                            clockwise: false)
+                            clockwise: false
+                        )
                     }
                     .stroke(lineWidth: 5)
                     .fill(Color.black)

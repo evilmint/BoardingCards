@@ -13,8 +13,8 @@ struct Card<Content: View>: View {
             content()
             Spacer().frame(width: 0, height: 6)
         }
-            .background(Color.white)
-            .border(BoardingCardsColor.primary, width: 2)
+        .background(Color.white)
+        .border(BoardingCardsColor.primary, width: 2)
     }
 }
 

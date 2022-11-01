@@ -13,7 +13,14 @@ struct PieChartView: View {
 
         for (i, value) in values.enumerated() {
             let degrees: Double = value * 360 / sum
-            tempSlices.append(PieSliceData(startAngle: Angle(degrees: endDeg), endAngle: Angle(degrees: endDeg + degrees),  color: self.colors[i], isStroked: false))
+            tempSlices.append(
+                PieSliceData(
+                    startAngle: Angle(degrees: endDeg),
+                    endAngle: Angle(degrees: endDeg + degrees),
+                    color: colors[i],
+                    isStroked: false
+                )
+            )
             endDeg += degrees
         }
         return tempSlices
@@ -21,14 +28,21 @@ struct PieChartView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            ZStack{
+            ZStack {
                 ForEach(0 ..< self.values.count, id: \.self) { i in
                     PieSliceView(pieSliceData: self.slices[i])
                 }
                 .frame(width: geometry.size.width, height: geometry.size.width)
 
                 ForEach(0 ..< self.values.count, id: \.self) { i in
-                    PieSliceView(pieSliceData:  PieSliceData(startAngle: self.slices[i].startAngle, endAngle: self.slices[i].endAngle, color: self.slices[i].color, isStroked: true))
+                    PieSliceView(
+                        pieSliceData: PieSliceData(
+                            startAngle: self.slices[i].startAngle,
+                            endAngle: self.slices[i].endAngle,
+                            color: self.slices[i].color,
+                            isStroked: true
+                        )
+                    )
                 }
                 .frame(width: geometry.size.width, height: geometry.size.width)
             }

@@ -12,9 +12,9 @@ final class TrainTransportation: TransportationMeans {
     private let traits: Traits
     let name = "Train"
 
-    func instructions(origin: City, destination: City) -> [AttributedString] {
+    func instructions(origin: City, destination: City) throws -> [AttributedString] {
         [
-            try! AttributedString(markdown: String(
+            try AttributedString(markdown: String(
                 format: "Take train **%@** from **%@** to **%@**. Sit in seat **%@**",
                 traits.train,
                 origin.name,

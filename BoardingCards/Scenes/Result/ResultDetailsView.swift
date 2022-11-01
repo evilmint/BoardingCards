@@ -1,6 +1,6 @@
+import ComposableArchitecture
 import Foundation
 import SwiftUI
-import ComposableArchitecture
 
 struct ResultDetailsView: View {
     let boardingCard: BoardingCard

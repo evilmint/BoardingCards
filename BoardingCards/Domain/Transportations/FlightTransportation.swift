@@ -20,39 +20,35 @@ final class FlightTransportation: TransportationMeans {
     private let traits: Traits
     let name = "Flight"
 
-    func instructions(origin: City, destination: City) -> [AttributedString] {
+    func instructions(origin: City, destination: City) throws -> [AttributedString] {
         let baggageDropFormatted: String
 
         switch traits.baggageDropMethod {
         case .automatic:
             baggageDropFormatted = String(format: "Baggage will be **automatically transferred** from your last leg.")
-        case .manual(let ticketCounter):
+        case let .manual(ticketCounter):
             baggageDropFormatted = String(format: "Baggage drop at ticket counter **%@**.", ticketCounter)
         }
 
-        do {
-            return [
-                try AttributedString(markdown:
-                    String(
-                        format: "From **%@**, take flight **%@** to **%@**.",
-                        origin.name,
-                        traits.flight,
-                        destination.name
-                    )
-                ),
-                try AttributedString(markdown: String(
-                    format: "Gate **%@**, seat **%@**.",
-                    traits.gate,
-                    traits.seat
-                )),
-                try AttributedString(markdown: String(
-                    format: "%@",
-                    baggageDropFormatted
-                ))
-            ]
-        } catch {
-            return []
-        }
+        return [
+            try AttributedString(markdown:
+                String(
+                    format: "From **%@**, take flight **%@** to **%@**.",
+                    origin.name,
+                    traits.flight,
+                    destination.name
+                )
+            ),
+            try AttributedString(markdown: String(
+                format: "Gate **%@**, seat **%@**.",
+                traits.gate,
+                traits.seat
+            )),
+            try AttributedString(markdown: String(
+                format: "%@",
+                baggageDropFormatted
+            ))
+        ]
     }
 
     init(traits: Traits) {

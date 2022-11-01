@@ -1,11 +1,11 @@
-import Foundation
 import Collections
 import ComposableArchitecture
+import Foundation
 
 final class JourneyPlanner: Sendable {
     func plan(using boardingCards: [BoardingCard]) async throws -> Journey {
         try await Task.sleep(milliseconds: UInt64.random(in: 500 ... 2500))
-        return self.planSynchronous(using: boardingCards)
+        return planSynchronous(using: boardingCards)
     }
 
     private func planSynchronous(using boardingCards: [BoardingCard]) -> Journey {
@@ -45,12 +45,12 @@ final class JourneyPlanner: Sendable {
 }
 
 extension JourneyPlanner: DependencyKey {
-  static let liveValue = JourneyPlanner()
+    static let liveValue = JourneyPlanner()
 }
 
 extension DependencyValues {
-  var journeyPlanner: JourneyPlanner {
-    get { self[JourneyPlanner.self] }
-    set { self[JourneyPlanner.self] = newValue }
-  }
+    var journeyPlanner: JourneyPlanner {
+        get { self[JourneyPlanner.self] }
+        set { self[JourneyPlanner.self] = newValue }
+    }
 }

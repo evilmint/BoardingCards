@@ -1,5 +1,5 @@
-import Foundation
 import ComposableArchitecture
+import Foundation
 
 struct JourneyGenerator {
     func generate(isPlanned: Bool = false) -> Journey {
@@ -30,7 +30,7 @@ struct JourneyGenerator {
         var transportation: TransportationMeans! = transportationType
 
         if transportation == nil {
-            switch Int.random(in: 1...3) {
+            switch Int.random(in: 1 ... 3) {
             case 1:
                 transportation = FlightTransportation(
                     traits: FlightTransportation.Traits(
@@ -65,23 +65,23 @@ struct JourneyGenerator {
     }
 
     private func randomEntrance() -> String {
-        let ordinal = Int.random(in: 1...99)
+        let ordinal = Int.random(in: 1 ... 99)
         let letter = randomLetter()
         return String(format: "%02d%@", ordinal, letter)
     }
 
     private func randomLetter() -> String {
-        String(Character(UnicodeScalar(65+Int.random(in: 0...25))!))
+        String(Character(UnicodeScalar(65 + Int.random(in: 0 ... 25))!))
     }
 }
 
 extension JourneyGenerator: DependencyKey {
-  static let liveValue = JourneyGenerator()
+    static let liveValue = JourneyGenerator()
 }
 
 extension DependencyValues {
-  var journeyGenerator: JourneyGenerator {
-    get { self[JourneyGenerator.self] }
-    set { self[JourneyGenerator.self] = newValue }
-  }
+    var journeyGenerator: JourneyGenerator {
+        get { self[JourneyGenerator.self] }
+        set { self[JourneyGenerator.self] = newValue }
+    }
 }

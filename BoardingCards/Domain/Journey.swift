@@ -10,7 +10,7 @@ struct Journey: Sendable, Equatable {
 
     var steps: [Step] {
         var steps = boardingCards
-            .flatMap { $0.transportation.instructions(origin: $0.origin, destination: $0.destination) }
+            .flatMap { (try? $0.transportation.instructions(origin: $0.origin, destination: $0.destination)) ?? [] }
             .map(Step.init)
 
         steps.append(Step(description: "You have arrived at your final destination."))

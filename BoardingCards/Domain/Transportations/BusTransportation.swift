@@ -15,7 +15,7 @@ final class BusTransportation: TransportationMeans {
     private let traits: Traits
     let name = "Bus"
 
-    func instructions(origin: City, destination: City) -> [AttributedString] {
+    func instructions(origin: City, destination: City) throws -> [AttributedString] {
         switch traits.type {
         case .airport:
             do {
@@ -25,21 +25,21 @@ final class BusTransportation: TransportationMeans {
                         origin.name,
                         destination.name
                     )),
-                    try AttributedString(markdown:  String(
+                    try AttributedString(markdown: String(
                         format: "No seat assignment."
                     ))
                 ]
             } catch {
                 return [AttributedString("wow")]
             }
-        case .regular(let seat):
+        case let .regular(seat):
             return [
-                try! AttributedString(markdown: String(
+                try AttributedString(markdown: String(
                     format: "Take the airport bus from **%@** to **%@**..",
                     origin.name,
                     destination.name
                 )),
-                try! AttributedString(markdown: String(format: "Seat **%@**.", seat))
+                try AttributedString(markdown: String(format: "Seat **%@**.", seat))
             ]
         }
     }

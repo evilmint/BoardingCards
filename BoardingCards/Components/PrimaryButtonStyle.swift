@@ -12,7 +12,7 @@ struct PrimaryButtonStyle: PrimitiveButtonStyle {
                 .overlay(
                     RoundedRectangle(cornerRadius: 6)
                         .stroke(BoardingCardsColor.primary, lineWidth: 2)
-                    )
+                )
                 .onTapGesture {
                     configuration.trigger()
                 }

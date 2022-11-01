@@ -43,7 +43,6 @@ struct ElementPreview<Value: View>: View {
                     .environment(\.sizeCategory, sizeCategory)
                     .previewDisplayName("\(sizeCategory)")
             }
-
         }
     }
 }

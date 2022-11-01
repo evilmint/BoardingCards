@@ -15,7 +15,11 @@ final class BoardingCard: Sendable, Equatable, Identifiable {
     }
 
     var instructions: [AttributedString] {
-        transportation.instructions(origin: origin, destination: destination)
+        do {
+            return try transportation.instructions(origin: origin, destination: destination)
+        } catch {
+            return []
+        }
     }
 
     init(origin: City, destination: City, transportation: TransportationMeans) {

@@ -1,7 +1,6 @@
 import ComposableArchitecture
 
 struct ResultReducer: ReducerProtocol {
-
     enum Action: Sendable, Equatable {
         case plan(Journey)
         case refresh
@@ -22,11 +21,19 @@ struct ResultReducer: ReducerProtocol {
     var body: some ReducerProtocol<State, Action> {
         Reduce { state, action in
             switch action {
-            case .presentDetails(let present, let boardingCard):
-                state = ResultReducer.State(journey: state.journey, detailsVisible: present, boardingCardDetail: boardingCard)
+            case let .presentDetails(present, boardingCard):
+                state = ResultReducer.State(
+                    journey: state.journey,
+                    detailsVisible: present,
+                    boardingCardDetail: boardingCard
+                )
                 return .none
             case .detailsDismissed:
-                state = ResultReducer.State(journey: state.journey, detailsVisible: false, boardingCardDetail: nil)
+                state = ResultReducer.State(
+                    journey: state.journey,
+                    detailsVisible: false,
+                    boardingCardDetail: nil
+                )
                 return .none
             default:
                 return .none

@@ -1,5 +1,5 @@
-import SwiftUI
 import ComposableArchitecture
+import SwiftUI
 
 struct ResultView: View {
     let store: StoreOf<ResultReducer>
@@ -12,7 +12,7 @@ struct ResultView: View {
                         sortTripButton(viewStore: viewStore)
                     } else {
                         #if targetEnvironment(macCatalyst)
-                        refreshTripButton(viewStore: viewStore)
+                            refreshTripButton(viewStore: viewStore)
                         #endif
                     }
                 }.frame(maxWidth: .infinity, alignment: .center)
@@ -34,8 +34,8 @@ struct ResultView: View {
 
     private func sortButtonText(journey: Journey) -> String {
         journey.isPlanned ?
-        "Sorted boarding cards" :
-        "Unsorted boarding cards"
+            "Sorted boarding cards" :
+            "Unsorted boarding cards"
     }
 
     private func sortTripButton(
@@ -98,7 +98,11 @@ struct ResultView_Previews: PreviewProvider {
         ElementPreview(
             ResultView(
                 store: Store(
-                    initialState: ResultReducer.State(journey: JourneyGenerator().generate(), detailsVisible: false, boardingCardDetail: nil),
+                    initialState: ResultReducer.State(
+                        journey: JourneyGenerator().generate(),
+                        detailsVisible: false,
+                        boardingCardDetail: nil
+                    ),
                     reducer: ResultReducer()
                 )
             )

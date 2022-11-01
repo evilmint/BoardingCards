@@ -1,5 +1,5 @@
-import Foundation
 import ComposableArchitecture
+import Foundation
 
 struct AppReducer: ReducerProtocol {
     enum State: Equatable {
@@ -28,7 +28,7 @@ struct AppReducer: ReducerProtocol {
         CombineReducers {
             Reduce { state, action in
                 switch action {
-                case .result(.plan(let journey)):
+                case let .result(.plan(journey)):
                     return .run { send in
                         await send(.loading(.empty))
 
@@ -44,7 +44,7 @@ struct AppReducer: ReducerProtocol {
                     state = .loading(.init())
                     return .none
 
-                case .journeyPlanned(let journey):
+                case let .journeyPlanned(journey):
                     state = .result(journey: journey)
                     return .none
 
